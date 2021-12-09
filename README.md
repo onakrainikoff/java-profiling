@@ -26,3 +26,24 @@
 - jinfo -sysprops <vmid>
 - jcmd <vmid> VM.system_properties
 - jcmd <vmid> VM.flags
+
+## Remote Profiling
+- mvn clean install -f gc/pom.xml
+-
+```
+java \
+-Dcom.sun.management.jmxremote=true \
+-Dcom.sun.management.jmxremote.port=65535 \
+-Dcom.sun.management.jmxremote.ssl=false \
+-Dcom.sun.management.jmxremote.authenticate=false \
+-Dcom.sun.management.jmxremote.local.only=false \
+-Djava.rmi.server.hostname=localhost \
+-jar gc/target/gc-jar-with-dependencies.jar
+  ```
+- java -jar gc/target/gc-jar-with-dependencies.jar
+- connect with jconsole
+-
+## Remote Debugging
+- mvn clean install -f gc/pom.xml
+- java -jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 gc/target/gc-jar-with-dependencies.jar
+- connect with idea
