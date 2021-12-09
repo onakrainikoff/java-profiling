@@ -40,7 +40,6 @@ java \
 -Djava.rmi.server.hostname=localhost \
 -jar gc/target/gc-jar-with-dependencies.jar
   ```
-- java -jar gc/target/gc-jar-with-dependencies.jar
 - connect with jconsole
 -
 ## Remote Debugging
